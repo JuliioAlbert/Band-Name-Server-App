@@ -20,6 +20,22 @@
         socket.on('disconnect', () => {
             console.log("Dissmiss Servidor");
         })
+
+        socket.on('respuesta',(e) => {
+            console.log(e.nombre);
+        });
+
+        socket.on('nuevo-mensaje', (e) => {
+            console.log(e);
+        });
+
+
+        socket.on('bandas-server', (e)=> {
+            console.clear();
+            console.table(e);
+        })
+
+        socket.emit('mensaje', {nombre:"Julio"}, )
     </script>
 </body>
 </html>

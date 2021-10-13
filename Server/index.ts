@@ -2,26 +2,19 @@ import express from "express";
 import { createServer } from "http";
 import path from 'path';
 
-import { Server } from "socket.io";
+
+import Server = require("socket.io");
+
 
 const app = express();
 const httpServer = createServer(app);
-const io = new Server(httpServer, { /* options */ });
+
+///Sockets
+export const io = new Server(httpServer, { /* options */ });
+import "./sockets/socket";
 
 
 require('dotenv').config();
-
-
-///Sockets
-
-
-io.on("connect", (socket) => {
-   console.log("Cliente Conectado ");
-
-   socket.on('disconnect', () => { 
-    console.log("Cliente Desconnectado");
-   });
-  });
 
 
 
